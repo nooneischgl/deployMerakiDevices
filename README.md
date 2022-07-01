@@ -11,3 +11,4 @@ Methods of Deploying Meraki Devices
 
 ## [deployMerakiDevices - Google Sheet](https://docs.google.com/spreadsheets/d/1B3yUDxsuFwzrvn6e2rBmHoKkx5ka7aZN5E1E_VM90OI/edit?usp=sharing)
 - Takes information for the google sheet and deployed it 
+- Make a Copy, read the read me, deploy
