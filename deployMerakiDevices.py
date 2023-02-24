@@ -46,12 +46,21 @@ if claimNetworkName != None:
     # Get Networkd ID
     for net in networks:
         if net["name"] == claimNetworkName:
-            networkID = net.id
+            networkID = net["id"]
 
     # Get Serial Numbers from Excel and Claim 
     for index, row in pdConfigFile.iterrows():
         sn = row['Serial Numbers']
-        dashboard.networks.claimNetworkDevices(networkID, [sn])
+        try: 
+            dashboard.networks.claimNetworkDevices(networkID, [sn])
+    # Catch Already Claimed Error 
+        except meraki.APIError  as error:
+            if "is already claimed" in str(error.message):
+                print("Device Already Claimed -- SKIPPING")
+                print(error.message)
+            else:
+                print(error.message)
+                raise
 
 
 # Update Device Name / Data
